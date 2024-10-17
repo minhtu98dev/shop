@@ -30,6 +30,9 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      <div className="mb-5">
+        <hr />
+      </div>
     </div>
   );
 };
