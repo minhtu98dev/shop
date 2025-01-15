@@ -15,14 +15,15 @@
   ## Các Công Nghệ Sử Dụng
   
     * Frontend:
+      
       - React
       - HTML, CSS, JavaScript
         
-    *Backend:
-  
+    * Backend:
+      
       - Nodejs/Expressjs
   
-    *Database:
+    * Database:
   
       - MongoDB
       
