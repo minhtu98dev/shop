@@ -7,20 +7,25 @@ import {
   userOrders,
   updateStatus,
   verifyStripe,
+  deleteOrder,
 } from "../controllers/orderController.js";
 import adminAuth from "../middleware/adminAuth.js";
 import authUser from "../middleware/auth.js";
 
 const orderRouter = express.Router();
-//admin features
+
+// Admin features
 orderRouter.post("/list", adminAuth, allOrders);
 orderRouter.post("/status", adminAuth, updateStatus);
-//payment features
+// Payment features
 orderRouter.post("/place", authUser, placeOrder);
 orderRouter.post("/stripe", authUser, placeOrderStripe);
 orderRouter.post("/razorpay", authUser, placeOrderRazorpay);
-//user features
+// User features
 orderRouter.post("/userorders", authUser, userOrders);
-//verify payment
+// Verify payment
 orderRouter.post("/verifyStripe", authUser, verifyStripe);
+// Delete order (only for admin)
+orderRouter.delete("/deleteOrder", deleteOrder);
+
 export default orderRouter;

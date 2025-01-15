@@ -32,7 +32,7 @@ const Orders = () => {
   return (
     <div className="border-t pt-16">
       <div className="text-2xl">
-        <Title text1={"MY"} text2={"ORDERS"} />
+        <Title text1={"ĐƠN HÀNG"} text2={"CỦA TÔI"} />
       </div>
       <div>
         {orders.map((order, index) => {
@@ -64,8 +64,8 @@ const Orders = () => {
                           {currency}
                           {item.price}
                         </p>
-                        <p>Size: {item.size}</p>
-                        <p>Quantity: {item.quantity}</p>
+                        <p>Kích Cỡ: {item.size}</p>
+                        <p>Số Lượng: {item.quantity}</p>
                       </div>
                     </div>
                   </div>
@@ -73,20 +73,21 @@ const Orders = () => {
               </div>
               <div className="mb-4">
                 <p>
-                  Date:{" "}
+                  Ngày:{" "}
                   <span className="text-gray-400">
                     {new Date(order.date).toDateString()}
                   </span>
                 </p>
                 <p>
-                  Payment:{" "}
+                  Phương Thức Thanh Toán:{" "}
                   <span className="text-gray-400">{order.paymentMethod}</span>
                 </p>
                 <p>
-                  Status: <span className="text-green-500">{order.status}</span>
+                  Trạng Thái:{" "}
+                  <span className="text-green-500">{order.status}</span>
                 </p>
                 <p>
-                  Total:{" "}
+                  Tổng Cộng:{" "}
                   <span className="font-medium">
                     {currency}
                     {total.toFixed(2)}
@@ -98,7 +99,7 @@ const Orders = () => {
                   onClick={loadOrderData}
                   className="border px-4 py-2 text-sm font-medium rounded-sm hover:bg-gray-200"
                 >
-                  Track Order
+                  Theo dõi đơn hàng
                 </button>
               </div>
             </div>

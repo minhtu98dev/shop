@@ -5,11 +5,11 @@ const NewsletterBox = () => {
   return (
     <div className="text-center">
       <p className="text-2xl font-medium text-gray-800">
-        Subscribe now & get 20% off
+        Đăng ký ngay và nhận ngay 20% giảm giá
       </p>
       <p className="text-gray-400 mt-3">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry.
+        Nhanh tay đăng ký để nhận ưu đãi đặc biệt và cập nhật những sản phẩm mới
+        nhất!
       </p>
       <form
         onSubmit={onSubmitHandler}
@@ -17,14 +17,15 @@ const NewsletterBox = () => {
       >
         <input
           type="email"
-          placeholder="Enter your email"
+          placeholder="Nhập email của bạn ..."
           className="w-full sm:flex-1 outline-none"
         />
         <button
           type="submit"
           className="bg-black text-white text-xs px-10 py-4"
+          onClick={() => (window.location.href = "/login")}
         >
-          SUBSCRIBE
+          ĐĂNG KÝ
         </button>
       </form>
     </div>

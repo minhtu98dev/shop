@@ -6,15 +6,43 @@ import { assets } from "../assets/assets";
 
 const Orders = ({ token }) => {
   const [orders, setOrders] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const ordersPerPage = 3;
 
+  // Hàm xóa đơn hàng
+  const deleteOrderHandler = async (orderId) => {
+    try {
+      const response = await axios.delete(
+        backendUrl + "/api/order/deleteOrder",
+        {
+          data: { orderId },
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (response.data.success) {
+        toast.success("Order deleted successfully");
+        fetchAllOrders(); // Cập nhật lại danh sách đơn hàng
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Error deleting order");
+    }
+  };
+
+  // Hàm tải tất cả đơn hàng
   const fetchAllOrders = async () => {
     if (!token) {
-      return null;
+      return;
     }
     try {
       const response = await axios.post(
         backendUrl + "/api/order/list",
-        {},
+        { page: currentPage, limit: ordersPerPage }, // Truyền tham số phân trang
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -23,7 +51,6 @@ const Orders = ({ token }) => {
         }
       );
       if (response.data.success) {
-        // Sort orders by date in descending order
         const sortedOrders = response.data.orders.sort(
           (a, b) => new Date(b.date) - new Date(a.date)
         );
@@ -36,6 +63,7 @@ const Orders = ({ token }) => {
     }
   };
 
+  // Hàm thay đổi trạng thái đơn hàng
   const statusHandler = async (event, orderId) => {
     try {
       const response = await axios.post(
@@ -57,17 +85,33 @@ const Orders = ({ token }) => {
     }
   };
 
+  // Phân trang đơn hàng
+  const chunkArray = (array, size) => {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+    return result;
+  };
+
+  const paginatedOrders = chunkArray(orders, ordersPerPage);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Gọi lại hàm khi token hoặc currentPage thay đổi
   useEffect(() => {
     fetchAllOrders();
-  }, [token]);
+  }, [token, currentPage]);
 
   return (
     <div>
-      <h3>Order Page</h3>
+      <h3>Đơn Hàng</h3>
       <div>
-        {orders.map((order, index) => (
+        {paginatedOrders[currentPage - 1]?.map((order, index) => (
           <div
-            className="grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700"
+            className="grid grid-cols-1 sm:grid-cols-[0.5fr_2fr_1fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr_0.5fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:my-4 text-xs sm:text-sm text-gray-700"
             key={index}
           >
             <img className="w-12" src={assets.parcel_icon} alt="" />
@@ -108,11 +152,14 @@ const Orders = ({ token }) => {
             </div>
             <div>
               <p className="text-sm sm:text-[15px]">
-                Items: {order.items.length}
+                Số lượng: {order.items.length}
               </p>
-              <p className="mt-3">Method: {order.paymentMethod}</p>
-              <p>Payment: {order.payment ? "Done" : "Pending"}</p>
-              <p>Date: {new Date(order.date).toLocaleDateString()}</p>
+              <p className="mt-3">Phương thức: {order.paymentMethod}</p>
+              <p>
+                Trạng thái:{" "}
+                {order.payment ? "Đã thanh toán" : "Chưa thanh toán"}
+              </p>
+              <p>Ngày: {new Date(order.date).toLocaleDateString()}</p>
             </div>
             <p className="text-sm sm:text-[15px]">
               {currency}
@@ -123,14 +170,36 @@ const Orders = ({ token }) => {
               value={order.status}
               className="p-2 font-semibold"
             >
-              <option value="Order Placed">Order Placed</option>
-              <option value="Packing">Packing</option>
-              <option value="Shipped">Shipped</option>
-              <option value="Out for delivery">Out for delivery</option>
-              <option value="Delivered">Delivered</option>
+              <option value="Order Placed">Đơn hàng đã được đặt</option>
+              <option value="Packing">Đang đóng gói</option>
+              <option value="Shipped">Đã gửi</option>
+              <option value="Out for delivery">Đang giao hàng</option>
+              <option value="Delivered">Đã giao</option>
             </select>
+            <button
+              onClick={() => deleteOrderHandler(order._id)}
+              className="ml-3 px-4 py-2 text-white bg-gray-500 rounded-md hover:bg-red-600"
+            >
+              Xóa
+            </button>
           </div>
         ))}
+      </div>
+
+      {/* Pagination controls */}
+      <div className="flex justify-center gap-2 mt-4">
+        {paginatedOrders.length > 1 &&
+          Array.from({ length: paginatedOrders.length }, (_, index) => (
+            <button
+              key={index}
+              onClick={() => handlePageChange(index + 1)}
+              className={`px-3 py-1 border ${
+                currentPage === index + 1 ? "bg-gray-600 text-white" : ""
+              }`}
+            >
+              {index + 1}
+            </button>
+          ))}
       </div>
     </div>
   );

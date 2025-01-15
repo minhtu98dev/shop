@@ -12,10 +12,10 @@ const LatestCollection = () => {
   return (
     <div className="my-10">
       <div className="text-center py-8 text-3xl">
-        <Title text1={"LATEST"} text2={"COLLECTIONS"} />
+        <Title text1={"BỘ SƯU TẬP"} text2={"MỚI NHẤT"} />
         <p className="w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600">
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the.
+          Khám phá bộ sưu tập quần áo mới nhất của chúng tôi, mang đến những
+          thiết kế hiện đại và phong cách phù hợp với mọi xu hướng.
         </p>
       </div>
       {/* rendering products */}

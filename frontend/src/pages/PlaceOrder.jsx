@@ -107,7 +107,7 @@ const PlaceOrder = () => {
       {/* left */}
       <div className="flex flex-col gap-4 w-full sm:max-w-[480px]">
         <div className="textxl sm:text-2xl my-3">
-          <Title text1={"DELIVERY"} text2={"INFORMATION"} />
+          <Title text1={"THÔNG TIN"} text2={"GIAO HÀNG"} />
         </div>
         <div className="flex gap-3">
           <input
@@ -115,7 +115,7 @@ const PlaceOrder = () => {
             name="firstName"
             value={formData.firstName}
             type="text"
-            placeholder="First name"
+            placeholder="Họ"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
           <input
@@ -123,7 +123,7 @@ const PlaceOrder = () => {
             name="lastName"
             value={formData.lastName}
             type="text"
-            placeholder="Last name"
+            placeholder="Tên"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
         </div>
@@ -132,7 +132,7 @@ const PlaceOrder = () => {
           name="email"
           value={formData.email}
           type="email"
-          placeholder="Email address"
+          placeholder="Địa chỉ email"
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
         />
         <input
@@ -140,7 +140,7 @@ const PlaceOrder = () => {
           name="street"
           value={formData.street}
           type="text"
-          placeholder="Street"
+          placeholder="Đường"
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
         />
         <div className="flex gap-3">
@@ -149,7 +149,7 @@ const PlaceOrder = () => {
             name="city"
             value={formData.city}
             type="text"
-            placeholder="City"
+            placeholder="Quận/Huyện"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
           <input
@@ -157,7 +157,7 @@ const PlaceOrder = () => {
             name="state"
             value={formData.state}
             type="text"
-            placeholder="State"
+            placeholder="Tỉnh/Thành phố"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
         </div>
@@ -167,7 +167,7 @@ const PlaceOrder = () => {
             name="zipcode"
             value={formData.zipcode}
             type="number"
-            placeholder="Zipcode"
+            placeholder="Mã bưu điện"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
           <input
@@ -175,7 +175,7 @@ const PlaceOrder = () => {
             name="country"
             value={formData.country}
             type="text"
-            placeholder="Country"
+            placeholder="Quốc gia"
             className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
           />
         </div>
@@ -184,7 +184,7 @@ const PlaceOrder = () => {
           name="phone"
           value={formData.phone}
           type="number"
-          placeholder="Phone"
+          placeholder="Điện thoại"
           className="border border-gray-300 rounded py-1.5 px-3.5 w-full"
         />
       </div>
@@ -195,7 +195,7 @@ const PlaceOrder = () => {
         </div>
         {/* payment */}
         <div className="mt-12">
-          <Title text1={"PAYMENT"} text2={"METHOD"} />
+          <Title text1={"PHƯƠNG THỨC"} text2={"THANH TOÁN"} />
           <div className="flex gap-3 flex-col lg:flex-row">
             <div
               onClick={() => setMethod("stripe")}
@@ -208,7 +208,7 @@ const PlaceOrder = () => {
               ></p>
               <img src={assets.stripe_logo} alt="" className="h-5 px-4" />
             </div>
-            <div
+            {/* <div
               onClick={() => setMethod("razorpay")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
             >
@@ -218,7 +218,7 @@ const PlaceOrder = () => {
                 }`}
               ></p>
               <img src={assets.razorpay_logo} alt="" className="h-5 px-4" />
-            </div>
+            </div> */}
             <div
               onClick={() => setMethod("cod")}
               className="flex items-center gap-3 border p-2 px-3 cursor-pointer"
@@ -229,7 +229,7 @@ const PlaceOrder = () => {
                 }`}
               ></p>
               <p className="text-gray-500 text-sm font-medium mx-4">
-                CASH ON DELIVERY
+                Thanh toán khi nhận hàng
               </p>
             </div>
           </div>
@@ -239,7 +239,7 @@ const PlaceOrder = () => {
               // onClick={() => navigate("/orders")}
               className="bg-black text-white px-16 py-3 text-sm"
             >
-              PLACE ORDER
+              ĐẶT HÀNG
             </button>
           </div>
         </div>

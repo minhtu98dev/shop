@@ -176,6 +176,33 @@ const userOrders = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
+// delete order
+const deleteOrder = async (req, res) => {
+  try {
+    const { orderId } = req.body; // Lấy orderId từ request body
+
+    if (!orderId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Order ID is required" });
+    }
+
+    // Xóa đơn hàng bằng id
+    const deletedOrder = await orderModel.findByIdAndDelete(orderId);
+
+    if (!deletedOrder) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Order not found" });
+    }
+
+    res.json({ success: true, message: "Order deleted successfully" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
 //update order status for admin
 const updateStatus = async (req, res) => {
   try {
@@ -196,4 +223,5 @@ export {
   allOrders,
   userOrders,
   updateStatus,
+  deleteOrder,
 };

@@ -64,7 +64,7 @@ const Product = () => {
             {productData.description}
           </p>
           <div className="flex flex-col gap-4 my-8">
-            <p>Select Size</p>
+            <p>Chọn kích cỡ</p>
             <div className="flex gap-2">
               {productData.sizes.map((item, index) => (
                 <button
@@ -83,37 +83,37 @@ const Product = () => {
             onClick={() => addToCart(productData._id, size)}
             className="bg-black text-white px-8 py-3 active:bg-gray-700"
           >
-            ADD TO CART
+            THÊM VÀO GIỎ HÀNG
           </button>
           <hr className="mt-8 w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
-            <p>100% Original product.</p>
-            <p>Cash on delivery is available on this product.</p>
-            <p>Easy return and exchange policy within 7 days.</p>
+            <p>Sản phẩm 100% chính hãng.</p>
+            <p>Thanh toán khi nhận hàng có sẵn cho sản phẩm này.</p>
+            <p>Chính sách đổi trả và hoàn tiền dễ dàng trong vòng 7 ngày.</p>
           </div>
         </div>
       </div>
       {/* Description */}
       <div className="mt-20 ">
         <div className="flex">
-          <b className="border px-5 py-3 text-sm">Description</b>
-          <p className="border px-5 py-3 text-sm">Reviews (122)</p>
+          <b className="border px-5 py-3 text-sm">Mô Tả</b>
+          <p className="border px-5 py-3 text-sm">Đánh Giá (122)</p>
         </div>
         <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
           <p>
-            An e-commerce website is an online platform that facilitates the
-            buying and selling of products or services over the internet. It
-            serves as a virtual marketplace where businesses and individuals can
-            showcase their products, interact with customers, and conduct
-            transactions without the need for a physical presence.
+            Sản phẩm này được làm từ chất liệu cao cấp, đảm bảo sự bền bỉ và
+            thoải mái khi sử dụng. Thiết kế hiện đại, phù hợp với mọi phong cách
+            và dễ dàng kết hợp với các trang phục khác. Với nhiều lựa chọn về
+            màu sắc và kích cỡ, sản phẩm này chắc chắn sẽ đáp ứng mọi nhu cầu
+            của bạn. Hãy tận hưởng sự kết hợp hoàn hảo giữa chất lượng và phong
+            cách với sản phẩm của chúng tôi!
           </p>
           <p>
-            E-commerce websites have gained immense popularity due to their
-            convenience, accessibility, and the global reach they offer.
-            E-commerce websites typically display products or services along
-            with detailed descriptions, images, prices, and any available
-            variations (e.g., sizes, colors). Each product usually has its own
-            dedicated page with relevant information.
+            Sản phẩm không chỉ đảm bảo chất lượng mà còn được kiểm tra kỹ lưỡng
+            trước khi đến tay người tiêu dùng, mang đến cho bạn sự an tâm tuyệt
+            đối. Được thiết kế để phù hợp với mọi dịp và nhu cầu sử dụng, đây sẽ
+            là lựa chọn lý tưởng cho mọi khách hàng yêu thích sự tiện dụng và
+            thời trang.
           </p>
         </div>
       </div>

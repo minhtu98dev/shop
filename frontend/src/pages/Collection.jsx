@@ -82,7 +82,7 @@ const Collection = () => {
           onClick={() => setShowFilter(!showFilter)}
           className="my-2 flex text-xl items-center cursor-pointer gap-2"
         >
-          FILTER
+          LỌC SẢN PHẨM
           <img
             src={assets.dropdown_icon}
             className={`h-3 sm:hidden ${showFilter ? "rotate-90" : " "}`}
@@ -95,7 +95,7 @@ const Collection = () => {
             showFilter ? "" : "hidden"
           } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">CATEGORIES</p>
+          <p className="mb-3 text-sm font-medium">DANH MỤC</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
               <input
@@ -104,7 +104,7 @@ const Collection = () => {
                 value={"Men"}
                 onChange={toggleCategory}
               />
-              Men
+              Nam
             </p>
             <p className="flex gap-2">
               <input
@@ -113,7 +113,7 @@ const Collection = () => {
                 value={"Women"}
                 onChange={toggleCategory}
               />
-              Women
+              Nữ
             </p>
             <p className="flex gap-2">
               <input
@@ -122,7 +122,7 @@ const Collection = () => {
                 value={"Kids"}
                 onChange={toggleCategory}
               />
-              Kids
+              Trẻ em
             </p>
           </div>
         </div>
@@ -132,7 +132,7 @@ const Collection = () => {
             showFilter ? "" : "hidden"
           } sm:block`}
         >
-          <p className="mb-3 text-sm font-medium">TYPE</p>
+          <p className="mb-3 text-sm font-medium">LOẠI</p>
           <div className="flex flex-col gap-2 text-sm font-light text-gray-700">
             <p className="flex gap-2">
               <input
@@ -141,7 +141,7 @@ const Collection = () => {
                 value={"Topwear"}
                 onChange={toggleSubCategory}
               />
-              Topwear
+              Áo
             </p>
             <p className="flex gap-2">
               <input
@@ -150,7 +150,7 @@ const Collection = () => {
                 value={"Bottomwear"}
                 onChange={toggleSubCategory}
               />
-              Bottomwear
+              Quần
             </p>
             <p className="flex gap-2">
               <input
@@ -159,7 +159,7 @@ const Collection = () => {
                 value={"Winterwear"}
                 onChange={toggleSubCategory}
               />
-              Winterwear
+              Áo khoác
             </p>
           </div>
         </div>
@@ -167,15 +167,15 @@ const Collection = () => {
       {/* right side */}
       <div className="flex-1">
         <div className="flex justify-between text-base sm:text-2xl mb-4">
-          <Title text1={"ALL"} text2={"COLLECTIONS"} />
+          <Title text1={"TẤT CẢ"} text2={"BỘ SƯU TẬP"} />
           {/* sort */}
           <select
             onChange={(e) => setSortType(e.target.value)}
             className="border-2 border-gray-300 text-sm px-2"
           >
-            <option value="relavent">Sort by: Relavent</option>
-            <option value="low-high">Sort by: Low to High</option>
-            <option value="high-low">Sort by: High to Low</option>
+            <option value="relevant">Sắp xếp theo: Liên quan</option>
+            <option value="low-high">Sắp xếp theo: Từ thấp đến cao</option>
+            <option value="high-low">Sắp xếp theo: Từ cao đến thấp</option>
           </select>
         </div>
         {/* map products */}
