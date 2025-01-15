@@ -170,11 +170,11 @@ const Orders = ({ token }) => {
               value={order.status}
               className="p-2 font-semibold"
             >
-              <option value="Order Placed">Đơn hàng đã được đặt</option>
-              <option value="Packing">Đang đóng gói</option>
-              <option value="Shipped">Đã gửi</option>
-              <option value="Out for delivery">Đang giao hàng</option>
-              <option value="Delivered">Đã giao</option>
+              <option value="Đặt hàng">Đơn hàng đã được đặt</option>
+              <option value="Đóng gói">Đang đóng gói</option>
+              <option value="Đã gửi">Đã gửi</option>
+              <option value="Đang giao hàng">Đang giao hàng</option>
+              <option value="Đã giao">Đã giao</option>
             </select>
             <button
               onClick={() => deleteOrderHandler(order._id)}
