@@ -9,7 +9,7 @@ const adminAuth = async (req, res, next) => {
     if (!token) {
       return res.json({
         success: false,
-        message: "not authorized login again ",
+        message: "Không được phép đăng nhập lại",
       });
     }
     const token_decode = jwt.verify(token, process.env.JWT_SECRET);
@@ -19,7 +19,7 @@ const adminAuth = async (req, res, next) => {
     if (token_decode !== info) {
       return res.json({
         success: false,
-        message: "not authorized login again",
+        message: "Không được phép đăng nhập lại",
       });
     }
     next();

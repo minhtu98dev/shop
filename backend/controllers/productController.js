@@ -29,18 +29,6 @@ const addProduct = async (req, res) => {
         return result.secure_url;
       })
     );
-
-    // console.log(
-    //   name,
-    //   description,
-    //   price,
-    //   category,
-    //   subCategory,
-    //   sizes,
-    //   bestseller
-    // );
-    // console.log(imagesUrl);
-
     const productData = {
       name,
       description,
@@ -55,7 +43,7 @@ const addProduct = async (req, res) => {
     console.log(productData);
     const product = new productModel(productData);
     await product.save();
-    res.json({ success: true, message: "product added" });
+    res.json({ success: true, message: "Sản phẩm được thêm vào" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });
@@ -77,7 +65,7 @@ const listProduct = async (req, res) => {
 const removeProduct = async (req, res) => {
   try {
     await productModel.findByIdAndDelete(req.body.id);
-    res.json({ success: true, message: "product removed" });
+    res.json({ success: true, message: "Sản phẩm đã bị xóa" });
   } catch (error) {
     console.log(error);
     res.json({ success: false, message: error.message });

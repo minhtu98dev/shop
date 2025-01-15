@@ -2,7 +2,10 @@ import jwt from "jsonwebtoken";
 const authUser = async (req, res, next) => {
   const { token } = req.headers;
   if (!token) {
-    return res.json({ success: false, message: "not authorized login again" });
+    return res.json({
+      success: false,
+      message: "Không được phép đăng nhập lại",
+    });
   }
   try {
     const token_decode = jwt.verify(token, process.env.JWT_SECRET);
