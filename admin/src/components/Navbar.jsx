@@ -16,7 +16,7 @@ const Navbar = ({ setToken }) => {
             rel="noopener noreferrer"
             className="border rounded-full px-5 py-2 hover:bg-gray-300 border-black"
           >
-            Vào trang Admin
+            Vào Shop
           </a>
         </div>
         <button
