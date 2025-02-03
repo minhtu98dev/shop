@@ -66,7 +66,7 @@ const Login = ({ setToken }) => {
           </button>
         </form>
         <div className="mt-5">
-          <h1>Mật Khẩu Admin:</h1>
+          <h1>Mật Khẩu Admin</h1>
           <p>Email: admin@gmail.com</p>
           <p>Mật khẩu: admin123</p>
         </div>
